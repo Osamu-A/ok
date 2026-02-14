@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <audio src="assets/audio/ok.mp3" autoplay></audio>
+    <!-- <audio src="assets/audio/ok.mp3" autoplay></audio> -->
+    <audio id="yaySound" src="assets/audio/ok.mp3"></audio>
+
+<script>
+document.addEventListener("click", function playOnce() {
+  const s = document.getElementById("yaySound");
+  s.play().catch(()=>{});
+  document.removeEventListener("click", playOnce);
+});
+</script>
+
     <div class="container">
         <!-- Gif -->
         <img src="assets/images/power-flying.gif" id="togepi-gif" alt="a cute picture of togepi"/>
