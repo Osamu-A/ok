@@ -132,9 +132,13 @@ noButton.addEventListener("click", () => {
     console.log(`Scaled Width: ${scaledWidth}, Max Width: ${maxYesWidth}`);
 
     // Check if the scaled width is less than the max width
-    if (scaledWidth < maxYesWidth) {
-        yesScale += 0.5;
-        yesButton.style.transform = `scale(${yesScale})`;
+    // if (scaledWidth < maxYesWidth) {
+    //     yesScale += 0.5;
+    //     yesButton.style.transform = `scale(${yesScale})`;
+    if (scaledWidth < maxYesWidth && yesScale < 4) {
+    yesScale += 0.5;
+    yesButton.style.transform = `scale(${yesScale})`;
+}
 
         const rootStyles = getComputedStyle(document.documentElement);
         const gapScaleFactor = parseFloat(
