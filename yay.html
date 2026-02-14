@@ -10,11 +10,17 @@
     <!-- <audio src="assets/audio/ok.mp3" autoplay></audio> -->
     <audio id="yaySound" src="assets/audio/ok.mp3"></audio>
 
-<script>
+<!-- <script>
 document.addEventListener("click", function playOnce() {
   const s = document.getElementById("yaySound");
   s.play().catch(()=>{});
   document.removeEventListener("click", playOnce);
+});
+</script> -->
+    <script>
+const s = document.getElementById("yaySound");
+s.play().catch(() => {
+  document.addEventListener("click", () => s.play(), { once:true });
 });
 </script>
 
