@@ -157,8 +157,29 @@ noButton.addEventListener("click", () => {
 });
 
 // yes button clicked — 🔊 sound added
+// yesButton.addEventListener("click", () => {
+//     yesSound.currentTime = 0;
+//     yesSound.play().catch(() => {});
+// });
 yesButton.addEventListener("click", () => {
     yesSound.currentTime = 0;
-    yesSound.play().catch(() => {});
+
+    // play must be directly inside click handler for iOS
+    const p = yesSound.play();
+
+    if (p !== undefined) {
+        p.then(() => {
+            // redirect AFTER sound finishes
+            yesSound.onended = () => {
+                window.location.href = "yay.html";
+            };
+        }).catch(err => {
+            console.log(err);
+            window.location.href = "yay.html";
+        });
+    } else {
+        window.location.href = "yay.html";
+    }
 });
+
 
